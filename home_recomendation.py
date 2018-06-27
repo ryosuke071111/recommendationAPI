@@ -12,10 +12,8 @@ homes = pd.read_csv('homes.csv')
 x = ["Unnamed: 9", "Unnamed: 8", "Unnamed: 7"]
 homes.drop(x, axis=1)
 
-#メンバー順で並べ替え
 homes.sort_values('members', ascending= False)[:10]
 
-#メンバーの多いものだけ抽出
 homes = homes[homes['members'] > 10000]
 homes.isnull().sum()
 ratings = ratings[ratings.rating >= 0]
@@ -27,15 +25,12 @@ mergeddf = mergeddf.drop_duplicates(['user_id','name'])
 
 home_pivot = mergeddf.pivot(index= 'name',columns='user_id',values='rating_user').fillna(0)
 
-##疎行列を非ゼロ要素だけにして学習する
 home_pivot_sparse = csr_matrix(home_pivot.values)
 
 knn = NearestNeighbors(n_neighbors=9,algorithm= 'brute', metric= 'cosine')
 
-# 前処理したデータセットでモデルを訓練
 model_knn = knn.fit(home_pivot_sparse)
 
-# パラメータ受け取って代入
 @app.route('/<name>', methods=['GET'])
 def match(name):
   home = (name)
