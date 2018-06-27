@@ -3,7 +3,7 @@ import numpy as np
 from scipy.sparse import csr_matrix
 from sklearn.neighbors import NearestNeighbors
 from flask import Flask, request, jsonify
-
+# encoding: utf-8
 app = Flask(__name__)
 
 ratings = pd.read_csv('rating.csv')
