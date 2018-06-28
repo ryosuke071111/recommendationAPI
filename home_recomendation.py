@@ -35,7 +35,7 @@ model_knn = knn.fit(home_pivot_sparse)
 def match(name):
   home = (name)
   distance, indice = model_knn.kneighbors(home_pivot.iloc[home_pivot.index == home].values.reshape(1,-1),n_neighbors=11)
-  return('{0}{1}{2}'.format(distance,"|", indice ))
+  print('{0}{1}{2}'.format(distance,"|", indice ))
 
 if __name__ == '__main__':
     app.run(debug=True)

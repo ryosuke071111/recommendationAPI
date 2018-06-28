@@ -1,1 +1,1 @@
-ml: home_recomendation.py
+web: gunicorn home_recomendation.py --log-file=-
