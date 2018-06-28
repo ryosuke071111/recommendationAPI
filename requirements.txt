@@ -1,7 +1,3 @@
-anaconda-project==0.8.2
-conda==4.5.4
-conda-build==3.10.5
-distributed==1.21.8
 -e git+https://github.com/django/django.git@02cd16a7a04529c726e5bb5a13d5979119f25c7d#egg=Django
 Flask==1.0.2
 matplotlib==2.2.2
